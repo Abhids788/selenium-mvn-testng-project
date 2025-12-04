@@ -1,3 +1,4 @@
+import org.PageObjects.LandingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,9 @@ chromeTest {
         //driver.get("https://demoqa.com/");
         driver.get("https://rahulshettyacademy.com/client");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        LandingPage landingPage= new LandingPage(driver);
+        landingPage.loginToApplication("abhids791@gmail.com", "Asd@12345");
 
         driver.findElement(By.id("userEmail")).sendKeys("abhids791@gmail.com");
         driver.findElement(By.id("userPassword")).sendKeys("Asd@12345");
