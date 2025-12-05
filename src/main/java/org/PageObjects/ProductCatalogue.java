@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -29,10 +27,10 @@ public class ProductCatalogue extends abstractComponent {
     //@FindBy(css="#toast-container")
     By toastMessage=By.cssSelector("#toast-container");
 
-    public void addProductToCart() {
+    public void addProductToCart(String productName) {
         waitforElementToAppear(productsBy);
         for (WebElement product : products) {
-            if (product.findElement(By.cssSelector("b")).getText().equalsIgnoreCase("adidas original")) {
+            if (product.findElement(By.cssSelector("b")).getText().equalsIgnoreCase(productName)) {
                 product.findElement(By.cssSelector(".card-body button:last-of-type")).click();
             }
         }
