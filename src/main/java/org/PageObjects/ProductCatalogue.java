@@ -19,23 +19,27 @@ public class ProductCatalogue extends abstractComponent {
     }
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-    @FindBy(css=".card-body")
+    @FindBy(css=".mb-3")
     List<WebElement> products;
 
-    By productsBy=By.cssSelector(".card-body");
+    By productsBy=By.cssSelector(".mb-3");
 
     //@FindBy(css="#toast-container")
     By toastMessage=By.cssSelector("#toast-container");
 
-    public void addProductToCart(String productName) {
+    public boolean addProductToCart(String productName) {
         waitforElementToAppear(productsBy);
+        boolean flag=false;
         for (WebElement product : products) {
             if (product.findElement(By.cssSelector("b")).getText().equalsIgnoreCase(productName)) {
                 product.findElement(By.cssSelector(".card-body button:last-of-type")).click();
+                flag= true;
+
             }
         }
         waitforElementToAppear(toastMessage);
         waitforElementToDisappear(toastMessage);
+        return flag;
 
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
 //        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#toast-container")));
