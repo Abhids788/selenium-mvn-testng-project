@@ -22,10 +22,11 @@ public class LandingPage {
     @FindBy(id="login")
     WebElement loginBtn;
 
-    public void loginToApplication(String email, String password){
+    public ProductCatalogue loginToApplication(String email, String password){
         useremail.sendKeys(email);
         userpassword.sendKeys(password);
         loginBtn.click();
+        return new ProductCatalogue(driver);
     }
 
     public void goTo(){
