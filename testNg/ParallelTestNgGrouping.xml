@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="E2E Suite" verbose="1" preserve-order="true">
+    <groups>
+        <run>
+            <include name="Invalid"/>
+        </run>
+    <!-- pass browser without extra quotes -->
+    </groups>
+
+    <parameter name="browser" value="chrome"/>
+    <test name="SubmitOrder">
+        <classes>
+            <class name="test.submitOrderTest"/>
+        </classes>
+    </test>
+    <test name="InvalidOrder">
+        <classes>
+            <class name="test.InvalidOrderTest"/>
+        </classes>
+    </test>
+</suite>

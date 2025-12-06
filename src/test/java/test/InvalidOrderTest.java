@@ -7,7 +7,7 @@ import testComponents.BaseTest;
 
 public class InvalidOrderTest extends BaseTest {
 
-    @Test
+    @Test (groups = {"Invalid"})
     public void submitOrder_Invalid() throws Exception {
 
         ProductCatalogue productCatalogue =landingPage.loginToApplication("abhids791@gmail.com", "Asd@12345");

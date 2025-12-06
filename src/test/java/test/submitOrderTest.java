@@ -4,36 +4,34 @@ import org.PageObjects.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testComponents.BaseTest;
-
-import java.io.FileNotFoundException;
+import testComponents.Helper.Data;
 
 public class submitOrderTest extends BaseTest {
 
-    @Test
-    public void submitOrder_adidas_original() throws Exception {
-        //LandingPage landingPage=launchApplication();
+    @Test(dataProvider = "products", dataProviderClass = Data.class)
+    public void submitOrder_adidas_original(String productName, String countryName) throws Exception {
 
         ProductCatalogue productCatalogue =landingPage.loginToApplication("abhids791@gmail.com", "Asd@12345");
-        productCatalogue.addProductToCart("adidas original");
+        productCatalogue.addProductToCart(productName);
         CartPage cartPage=productCatalogue.goToCartPage();
-        boolean match= cartPage.verifyProductInCart("adidas original");
+        boolean match= cartPage.verifyProductInCart(productName);
         Assert.assertTrue(match);
         CheckoutPage checkoutPage= cartPage.clickCheckout();
-        checkoutPage.fillCheckoutDetails("India");
+        checkoutPage.fillCheckoutDetails(countryName);
         Confirmationpage confirmationpage=checkoutPage.clickSubmitOrder();
         Assert.assertTrue(confirmationpage.confirmMessage());
     }
 
-    @Test
-    public void submitOrder_ZARA_COAT() throws Exception {
-        ProductCatalogue productCatalogue =landingPage.loginToApplication("abhids791@gmail.com", "Asd@12345");
-        productCatalogue.addProductToCart("ZARA COAT 3");
-        CartPage cartPage=productCatalogue.goToCartPage();
-        boolean match= cartPage.verifyProductInCart("ZARA COAT 3");
-        Assert.assertTrue(match);
-        CheckoutPage checkoutPage= cartPage.clickCheckout();
-        checkoutPage.fillCheckoutDetails("India");
-        Confirmationpage confirmationpage=checkoutPage.clickSubmitOrder();
-        Assert.assertTrue(confirmationpage.confirmMessage());
-    }
+//    @Test
+//    public void submitOrder_ZARA_COAT() throws Exception {
+//        ProductCatalogue productCatalogue =landingPage.loginToApplication("abhids791@gmail.com", "Asd@12345");
+//        productCatalogue.addProductToCart("ZARA COAT 3");
+//        CartPage cartPage=productCatalogue.goToCartPage();
+//        boolean match= cartPage.verifyProductInCart("ZARA COAT 3");
+//        Assert.assertTrue(match);
+//        CheckoutPage checkoutPage= cartPage.clickCheckout();
+//        checkoutPage.fillCheckoutDetails("India");
+//        Confirmationpage confirmationpage=checkoutPage.clickSubmitOrder();
+//        Assert.assertTrue(confirmationpage.confirmMessage());
+//    }
 }
