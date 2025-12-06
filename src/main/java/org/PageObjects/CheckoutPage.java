@@ -29,7 +29,7 @@ public class CheckoutPage extends abstractComponent {
 
     public void fillCheckoutDetails(String countryName){
         Actions a=new Actions(driver);
-        a.sendKeys(countryInput,"ind").build().perform();
+        a.sendKeys(countryInput,countryName).build().perform();
         waitforElementToAppear(By.cssSelector(".ta-results"));
 //        List<WebElement> countries=driver.findElements(By.cssSelector(".ta-results button"));
         for(WebElement country:countryResults) {
