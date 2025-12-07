@@ -1,5 +1,6 @@
 package test;
 
+import com.aventstack.extentreports.ExtentReports;
 import org.PageObjects.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,6 +8,8 @@ import testComponents.BaseTest;
 import testComponents.Helper.Data;
 
 public class submitOrderTest extends BaseTest {
+    ExtentReports extentsTest;
+
 
     @Test(dataProvider = "products", dataProviderClass = Data.class)
     public void submitOrder_adidas_original(String productName, String countryName) throws Exception {
@@ -15,7 +18,7 @@ public class submitOrderTest extends BaseTest {
         productCatalogue.addProductToCart(productName);
         CartPage cartPage=productCatalogue.goToCartPage();
         boolean match= cartPage.verifyProductInCart(productName);
-        Assert.assertTrue(match);
+        Assert.assertFalse(match);
         CheckoutPage checkoutPage= cartPage.clickCheckout();
         checkoutPage.fillCheckoutDetails(countryName);
         Confirmationpage confirmationpage=checkoutPage.clickSubmitOrder();

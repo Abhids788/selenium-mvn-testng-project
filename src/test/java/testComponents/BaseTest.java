@@ -1,6 +1,8 @@
 // java
 package testComponents;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.apache.commons.io.FileUtils;
 import org.PageObjects.LandingPage;
 import org.openqa.selenium.OutputType;
@@ -11,6 +13,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,6 +22,7 @@ import java.util.Properties;
 
 public class BaseTest {
     WebDriver driver = null;
+    ExtentReports extent;
     public LandingPage landingPage=null;
 
     public WebDriver InitializeDriver() throws Exception {
@@ -62,9 +66,9 @@ public class BaseTest {
     public String getScreenshot(String testCaseName, WebDriver driver) throws Exception {
         TakesScreenshot ts=(TakesScreenshot)driver;
         File source= ts.getScreenshotAs(OutputType.FILE);
-        File destinationFile=new File(System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png");
+        File destinationFile=new File(System.getProperty("user.dir")+"\\reports\\ScreenShots\\"+testCaseName+".png");
         FileUtils.copyFile(source,destinationFile);
-        return System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
+        return System.getProperty("user.dir")+"\\reports\\ScreenShots\\"+testCaseName+".png";
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -81,4 +85,16 @@ public class BaseTest {
             driver.quit();
         }
     }
+
+//    @BeforeTest(alwaysRun = true)
+//    public  void setUp() {
+//        String path =System.getProperty("user.dir")+"\\reports\\extentReport\\index.html";
+//        ExtentSparkReporter reporter= new ExtentSparkReporter(path);
+//        reporter.config().setReportName("Web Automation Results");
+//        reporter.config().setDocumentTitle("Test Results");
+//
+//        extent= new ExtentReports();
+//        extent.attachReporter(reporter);
+//        extent.setSystemInfo("Tester", "Abhijit Das");
+//    }
 }
