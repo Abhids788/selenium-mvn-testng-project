@@ -5,13 +5,8 @@
         <listener class-name="testComponents.Listeners"/>
     </listeners>
     <!-- pass browser without extra quotes -->
-    <parameter name="browser" value="edge"/>
-    <test name="SubmitOrderTests">
-        <classes>
-            <class name="test.submitOrderTest"/>
-        </classes>
-    </test>'
-    <test name="InvalidOrderTest">
+    <parameter name="browser" value="firefox"/>
+    <test name="InvalidOrderTestForIRetry">
         <classes>
             <class name="test.InvalidOrderTest"/>
         </classes>
