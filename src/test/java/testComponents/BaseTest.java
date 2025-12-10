@@ -13,7 +13,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,20 +24,22 @@ import java.util.Properties;
 public class BaseTest {
     WebDriver driver = null;
     ExtentReports extent;
-    public LandingPage landingPage=null;
+    public LandingPage landingPage = null;
 
-    public WebDriver InitializeDriver() throws Exception {
-        Properties prop = new Properties();
-        try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/org/resources/Global.properties")) {
-            prop.load(fis);
-        }
-
-        String browserName = prop.getProperty("browser");
+    public WebDriver InitializeDriver(String browserName) throws Exception {
+        // If TestNG didn't provide a browser, fall back to properties file
         if (browserName == null || browserName.isBlank()) {
-            throw new IllegalStateException("Property `browser` is missing in `src/main/java/org/resources/Global.properties`");
+            Properties prop = new Properties();
+            try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/org/resources/Global.properties")) {
+                prop.load(fis);
+            }
+            browserName = prop.getProperty("browser");
         }
 
-        // Sanitize the value: remove surrounding quotes and whitespace
+        if (browserName == null || browserName.isBlank()) {
+            throw new IllegalStateException("Property `browser` is missing and no TestNG parameter was provided");
+        }
+
         browserName = browserName.replaceAll("^['\"]+|['\"]+$", "").trim().toLowerCase();
 
         try {
@@ -64,16 +67,17 @@ public class BaseTest {
     }
 
     public String getScreenshot(String testCaseName, WebDriver driver) throws Exception {
-        TakesScreenshot ts=(TakesScreenshot)driver;
-        File source= ts.getScreenshotAs(OutputType.FILE);
-        File destinationFile=new File(System.getProperty("user.dir")+"\\reports\\ScreenShots\\"+testCaseName+".png");
-        FileUtils.copyFile(source,destinationFile);
-        return System.getProperty("user.dir")+"\\reports\\ScreenShots\\"+testCaseName+".png";
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        File destinationFile = new File(System.getProperty("user.dir") + "\\reports\\ScreenShots\\" + testCaseName + ".png");
+        FileUtils.copyFile(source, destinationFile);
+        return System.getProperty("user.dir") + "\\reports\\ScreenShots\\" + testCaseName + ".png";
     }
 
     @BeforeMethod(alwaysRun = true)
-    public LandingPage launchApplication() throws Exception {
-        driver = InitializeDriver();
+    @Parameters("browser")
+    public LandingPage launchApplication(@Optional("chrome") String browser) throws Exception {
+        driver = InitializeDriver(browser);
         landingPage = new LandingPage(driver);
         landingPage.goTo();
         return landingPage;
@@ -85,16 +89,4 @@ public class BaseTest {
             driver.quit();
         }
     }
-
-//    @BeforeTest(alwaysRun = true)
-//    public  void setUp() {
-//        String path =System.getProperty("user.dir")+"\\reports\\extentReport\\index.html";
-//        ExtentSparkReporter reporter= new ExtentSparkReporter(path);
-//        reporter.config().setReportName("Web Automation Results");
-//        reporter.config().setDocumentTitle("Test Results");
-//
-//        extent= new ExtentReports();
-//        extent.attachReporter(reporter);
-//        extent.setSystemInfo("Tester", "Abhijit Das");
-//    }
 }
