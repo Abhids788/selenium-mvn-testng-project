@@ -33,6 +33,12 @@ README.md
 
 ### 🔹 **1. Run Smoke/Regression Suite on Edge**
 ```sh
+
+-Dbrowser=chrome
+-Dbrowser=edge
+-Dbrowser=firefox
+
 mvn test -PSmoke -Dbrowser=edge
 mvn test -PRegression -Dbrowser=edge
+
 
