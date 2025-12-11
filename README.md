@@ -42,6 +42,6 @@ You can run tests in any supported browser:
 🔹 Run Smoke Suite on Edge
 mvn test -PSmoke -Dbrowser=edge
 
-🔹 Run Regression Suite on Edge
-mvn test -PRegression -Dbrowser=edge
+🔹 Run Regression Suite on Chrome
+mvn test -PRegression -Dbrowser=chrome
 
