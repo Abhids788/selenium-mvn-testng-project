@@ -11,14 +11,14 @@ public class submitOrderTest extends BaseTest {
     ExtentReports extentsTest;
 
 
-    @Test(dataProvider = "products", dataProviderClass = Data.class)
+    @Test(dataProvider = "products", dataProviderClass = Data.class, groups = {"regression", "smoke"})
     public void submitOrder_adidas_original(String productName, String countryName) throws Exception {
 
         ProductCatalogue productCatalogue =landingPage.loginToApplication("abhids791@gmail.com", "Asd@12345");
         productCatalogue.addProductToCart(productName);
         CartPage cartPage=productCatalogue.goToCartPage();
         boolean match= cartPage.verifyProductInCart(productName);
-        Assert.assertFalse(match);
+        Assert.assertTrue(match);
         CheckoutPage checkoutPage= cartPage.clickCheckout();
         checkoutPage.fillCheckoutDetails(countryName);
         Confirmationpage confirmationpage=checkoutPage.clickSubmitOrder();

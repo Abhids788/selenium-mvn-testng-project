@@ -12,6 +12,7 @@
     </groups>
 
     <parameter name="browser" value="chrome"/>
+    <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
     <test name="SubmitOrder">
         <classes>
             <class name="test.submitOrderTest"/>

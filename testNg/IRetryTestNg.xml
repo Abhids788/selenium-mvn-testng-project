@@ -6,9 +6,10 @@
     </listeners>
     <!-- pass browser without extra quotes -->
     <parameter name="browser" value="firefox"/>
+    <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
     <test name="InvalidOrderTestForIRetry">
         <classes>
-            <class name="test.InvalidOrderTest"/>
+            <class name="test.InvalidOrderIRetryTest"/>
         </classes>
     </test>
 </suite>
