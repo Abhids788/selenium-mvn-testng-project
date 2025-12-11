@@ -40,6 +40,7 @@ You can run tests in any supported browser:
 -Dbrowser=chrome
 -Dbrowser=edge
 -Dbrowser=firefox
+```
 
 ### 🔹 Run Smoke Suite on Edge
 ```sh
