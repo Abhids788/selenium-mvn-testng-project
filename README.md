@@ -31,7 +31,7 @@ README.md
 
 ## ▶️ How to Run the Test Suites
 
-### 🔹 **1. Run Smoke Suite on Edge**
+### 🔹 **1. Run Smoke/Regression Suite on Edge**
 ```sh
 mvn test -PSmoke -Dbrowser=edge
 mvn test -PRegression -Dbrowser=edge
