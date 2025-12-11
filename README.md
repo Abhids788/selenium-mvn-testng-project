@@ -16,7 +16,6 @@ It supports running tests with different **TestNG suites** and **multiple browse
 
 ---
 ## 📦 Project Structure
-
 src
 └── test
 ├── java
