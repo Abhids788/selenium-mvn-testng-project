@@ -5,9 +5,14 @@
         <listener class-name="testComponents.Listeners"/>
     </listeners>
     <!-- pass browser without extra quotes -->
-
+    <groups>
+        <run>
+            <include name="smoke"/>
+        </run>
+        <!-- pass browser without extra quotes -->
+    </groups>
     <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
-    <parameter name="browser" value="firefox"/>
+    <parameter name="browser" value="chrome"/>
     <test name="SubmitOrderTests">
         <classes>
             <class name="test.submitOrderTest"/>
