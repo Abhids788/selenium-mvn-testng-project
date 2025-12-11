@@ -56,7 +56,7 @@
                         <version>3.5.4</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testNg/testng.xml</suiteXmlFile>
+                                <suiteXmlFile>testNg/testNgRegression.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
@@ -74,7 +74,7 @@
                         <version>3.5.4</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>testNg/ParallelTestNgGrouping.xml</suiteXmlFile>
+                                <suiteXmlFile>testNg/testNgSmoke.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
