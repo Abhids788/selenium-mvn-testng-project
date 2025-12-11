@@ -46,7 +46,7 @@ You can run tests in any supported browser:
 ```sh
 mvn test -PSmoke -Dbrowser=edge
 ```
-🔹 Run Smoke Suite on Edge
+### 🔹 Run Regression Suite on Edge
 ```sh
 mvn test -PRegression -Dbrowser=chrome
 ```
