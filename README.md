@@ -31,14 +31,17 @@ README.md
 
 ## ▶️ How to Run the Test Suites
 
-### 🔹 **1. Run Smoke/Regression Suite on Edge**
-```sh
+### 🔹 Browser Options
+You can run tests in any supported browser:
 
+```sh
 -Dbrowser=chrome
 -Dbrowser=edge
 -Dbrowser=firefox
 
+🔹 Run Smoke Suite on Edge
 mvn test -PSmoke -Dbrowser=edge
-mvn test -PRegression -Dbrowser=edge
 
+🔹 Run Regression Suite on Edge
+mvn test -PRegression -Dbrowser=edge
 
