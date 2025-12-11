@@ -15,7 +15,11 @@ It supports running tests with different **TestNG suites** and **multiple browse
 - ✔️ HTML Reports (Extent or Allure — if included)
 
 ---
+
+
 ## 📦 Project Structure
+
+
 src
 └── test
 ├── java
@@ -23,6 +27,7 @@ src
 └── testng.xml
 pom.xml
 README.md
+
 
 
 ---
