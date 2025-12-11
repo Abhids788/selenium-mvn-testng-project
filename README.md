@@ -45,6 +45,9 @@ You can run tests in any supported browser:
 ### 🔹 Run Smoke Suite on Edge
 ```sh
 mvn test -PSmoke -Dbrowser=edge
+```
+🔹 Run Smoke Suite on Edge
+```sh
 mvn test -PRegression -Dbrowser=chrome
-
+```
 
