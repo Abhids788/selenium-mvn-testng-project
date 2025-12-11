@@ -5,7 +5,9 @@
         <listener class-name="testComponents.Listeners"/>
     </listeners>
     <!-- pass browser without extra quotes -->
-    <parameter name="browser" value="chrome"/>
+
+    <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
+    <parameter name="browser" value="firefox"/>
     <test name="SubmitOrderTests">
         <classes>
             <class name="test.submitOrderTest"/>

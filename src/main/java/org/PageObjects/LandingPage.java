@@ -29,8 +29,8 @@ public class LandingPage {
         return new ProductCatalogue(driver);
     }
 
-    public void goTo(){
-        driver.get("https://rahulshettyacademy.com/client");
+    public void goTo(String url){
+        driver.get(url);
     }
 
 }

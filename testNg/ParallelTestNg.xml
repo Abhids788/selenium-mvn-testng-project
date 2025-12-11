@@ -6,6 +6,7 @@
     </listeners>
     <!-- pass browser without extra quotes -->
     <parameter name="browser" value="edge"/>
+    <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
     <test name="SubmitOrderTests">
         <classes>
             <class name="test.submitOrderTest"/>

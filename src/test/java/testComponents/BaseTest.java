@@ -28,19 +28,16 @@ public class BaseTest {
 
     public WebDriver InitializeDriver(String browserName) throws Exception {
         // If TestNG didn't provide a browser, fall back to properties file
+
         if (browserName == null || browserName.isBlank()) {
-            Properties prop = new Properties();
-            try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/org/resources/Global.properties")) {
-                prop.load(fis);
-            }
-            browserName = prop.getProperty("browser");
+            browserName= System.getProperty("browser");
         }
 
         if (browserName == null || browserName.isBlank()) {
             throw new IllegalStateException("Property `browser` is missing and no TestNG parameter was provided");
         }
 
-        browserName = browserName.replaceAll("^['\"]+|['\"]+$", "").trim().toLowerCase();
+        browserName = browserName.trim().toLowerCase();
 
         try {
             switch (browserName) {
@@ -62,7 +59,6 @@ public class BaseTest {
         } catch (Exception e) {
             throw new RuntimeException("Failed to initialize WebDriver for browser: " + browserName, e);
         }
-
         return driver;
     }
 
@@ -75,11 +71,11 @@ public class BaseTest {
     }
 
     @BeforeMethod(alwaysRun = true)
-    @Parameters("browser")
-    public LandingPage launchApplication(@Optional("chrome") String browser) throws Exception {
+    @Parameters({"browser", "envUrl"})
+    public LandingPage launchApplication(@Optional String browser, @Optional String envUrl) throws Exception {
         driver = InitializeDriver(browser);
         landingPage = new LandingPage(driver);
-        landingPage.goTo();
+        landingPage.goTo(envUrl);
         return landingPage;
     }
 
