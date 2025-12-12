@@ -18,13 +18,30 @@ It supports running tests with different **TestNG suites** and **multiple browse
 ## 📦 Project Structure
 
 ```
-src
- └── test
-      ├── java
-      ├── resources
-      └── testng.xml
-pom.xml
-README.md
+project-root
+│── pom.xml
+│── README.md
+│── .gitignore
+│
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── org
+│   │           ├── AbstractComponents
+│   │           ├── PageObjects
+│   │           └── resources
+│   └── test
+│       └── java
+│           ├── test
+│           └── testComponents
+│
+├── testNg
+│   ├── testNgSmoke.xml
+│   ├── testNgRegression.xml
+│   └── ParallelTestNG.xml
+│
+└── target
+
 ```
 
 
