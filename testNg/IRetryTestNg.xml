@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="E2E Suite" verbose="1" preserve-order="true">
+    <listeners>
+        <listener class-name="testComponents.Listeners"/>
+    </listeners>
+    <!-- pass browser without extra quotes -->
+    <parameter name="browser" value="firefox"/>
+    <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
+    <test name="InvalidOrderTestForIRetry">
+        <classes>
+            <class name="test.InvalidOrderIRetryTest"/>
+        </classes>
+    </test>
+</suite>

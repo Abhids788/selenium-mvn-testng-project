@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="E2E Suite" verbose="1" preserve-order="true">
+    <listeners>
+        <listener class-name="testComponents.Listeners"/>
+    </listeners>
+    <!-- pass browser without extra quotes -->
+    <groups>
+        <run>
+            <include name="smoke"/>
+        </run>
+        <!-- pass browser without extra quotes -->
+    </groups>
+    <parameter name="envUrl" value="https://the-internet.herokuapp.com/"/>
+    <parameter name="browser" value="firefox"/>
+    <test name="SubmitOrderTests">
+        <classes>
+            <class name="test.AB_PageTests"/>
+        </classes>
+    </test>
+<!--    abc-->
+</suite>
