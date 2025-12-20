@@ -23,6 +23,11 @@ public class ProductCatalogue extends abstractComponent {
     List<WebElement> products;
 
     By productsBy=By.cssSelector(".mb-3");
+<<<<<<< HEAD
+=======
+
+    //@FindBy(css="#toast-container")
+>>>>>>> 8bbf9d5fb00642cb1c4896fa47c64bcdce963000
     By toastMessage=By.cssSelector("#toast-container");
 
     public boolean addProductToCart(String productName) {
@@ -38,5 +43,11 @@ public class ProductCatalogue extends abstractComponent {
         waitforElementToAppear(toastMessage);
         waitforElementToDisappear(toastMessage);
         return flag;
+<<<<<<< HEAD
+=======
+
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
+//        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#toast-container")));
+>>>>>>> 8bbf9d5fb00642cb1c4896fa47c64bcdce963000
     }
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<<<<<<< HEAD
 <suite name="E2E Suite" verbose="1" preserve-order="true">
+=======
+<suite name="E2E Smoke Suite" verbose="1" preserve-order="true">
+>>>>>>> 8bbf9d5fb00642cb1c4896fa47c64bcdce963000
     <listeners>
         <listener class-name="testComponents.Listeners"/>
     </listeners>
@@ -11,11 +15,20 @@
         </run>
         <!-- pass browser without extra quotes -->
     </groups>
+<<<<<<< HEAD
     <parameter name="envUrl" value="https://the-internet.herokuapp.com/"/>
     <parameter name="browser" value="firefox"/>
     <test name="SubmitOrderTests">
         <classes>
             <class name="test.AB_PageTests"/>
+=======
+    <parameter name="envUrl" value="https://rahulshettyacademy.com/client"/>
+    <parameter name="browser" value="chrome"/>
+    <test name="SubmitOrderTests">
+        <classes>
+            <class name="test.submitOrderTest"/>
+            <class name="test.InvalidOrderTest"/>
+>>>>>>> 8bbf9d5fb00642cb1c4896fa47c64bcdce963000
         </classes>
     </test>
 <!--    abc-->
